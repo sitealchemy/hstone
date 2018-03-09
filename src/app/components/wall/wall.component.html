@@ -1,0 +1,20 @@
+<nav class="navbar navbar-light bg-light justify-content-between">
+  <a class="navbar-brand">Hstone</a>
+  <form class="form-inline">
+    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" [ngModel]="search.title" (ngModelChange)="searchChange($event)" name="search">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit" (click)="logout()">Logout</button>
+  </form>
+</nav>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-6 col-lg-4" *ngFor="let message of messages | orderBy: 'id' | filterBy: search">
+      <div class="card" >
+        <div class="card-body">
+          <h5 class="card-title">{{ message.title }}</h5>
+          <p class="card-text">{{ message.body }}</p>
+          <a href="#" class="btn btn-primary" (click)="showDetails($event, message.id)">Details</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
